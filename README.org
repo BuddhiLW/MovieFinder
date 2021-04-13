@@ -37,7 +37,7 @@
     <div class="movie">
       <img src="https://image.tmdb.org/t/p/w500//fev8UFNFFYsD5q7AcYS8LyTzqwl.jpg">
       <div class="title">Tom & Jerry</div>
-      <button>
+      <button onClick="buy();">
         Comprar
         <ion-icon name="cart-outline"></ion-icon>
       </button>
@@ -51,6 +51,7 @@
   </div>
 
   <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./js/request.js"></script>
   </body>
 
@@ -285,6 +286,37 @@ table {
 #+end_src
 
 ** JavaScript
-#+begin_src js
+#+begin_src js :tangle ./js/request.js :mkdirp yes
+  // const axios = require('axios').default;
+  var display = (api) =>
+      {let requestShow = axios.get(api);
+       requestShow.then(render);
+      };
 
+  var querier = e => document.querySelector(e);
+  function template (data){ 
+      let text = ` 
+  <div class="movie">
+    <img src="$(data.imagem)">
+        <div class="title">$(data.titulo)</div>
+        <button onClick="buy($(data.id));">
+          Comprar
+          <ion-icon name="cart-outline"></ion-icon>
+        </button>
+      </div>
+  `
+      return text;
+  };
+  var DataInnerHTML = e => data => f => {e.innerHTML += f(data)};
+
+  var render = response =>
+      {let movies = querier(".movies");
+       response.data.forEach(movie => DataInnerHTML(movies)(movie)(template));
+      };
+
+  display("https://mock-api.bootcamp.respondeai.com.br/api/v2/moviefinder/filmes");
+#+end_src
+
+#+begin_src js
+var buy = () => ();
 #+end_src
