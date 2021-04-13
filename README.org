@@ -1,0 +1,290 @@
+#+AUTHOR: BuddhiLW
+#+STARTUP: latexpreview
+#+PROPERTY: header-args:js :tangle ./js/request.js :mkdirp yes
+
+* MovieFinder
+** Html
+*** HTML Header
+#+begin_src html :tangle ./index.html :mkdirp yes
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>MovieFinder</title>
+</head>
+
+<body>
+#+end_src
+
+*** Body
+**** Header
+#+begin_src html :tangle ./index.html :mkdirp yes
+  <div class="app">
+    <div class="logo">
+      <img src="img/logo.png">
+    </div>
+#+end_src
+
+**** Main page
+#+begin_src html :tangle ./index.html :mkdirp yes
+  <div class="movies">
+    <div class="movie">
+      <img src="https://image.tmdb.org/t/p/w500//fev8UFNFFYsD5q7AcYS8LyTzqwl.jpg">
+      <div class="title">Tom & Jerry</div>
+      <button>
+        Comprar
+        <ion-icon name="cart-outline"></ion-icon>
+      </button>
+    </div>
+  </div>
+#+end_src
+
+**** Script import and end of file
+#+begin_src html :tangle ./index.html :mkdirp yes
+  <!-- closing div class="app" -->
+  </div>
+
+  <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+  <script src="./js/request.js"></script>
+  </body>
+
+  </html>
+#+end_src
+** CSS
+
+*** Reset
+#+begin_src css :tangle ./css/reset.css :mkdirp yes
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+#+end_src
+
+*** Style
+#+begin_src css :tangle ./css/style.css :mkdirp yes
+  ,* {
+      box-sizing: border-box;
+      transition: all ease .2s;
+  }
+
+  body {
+      background-image: url('../img/background.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      margin-top: 115px;
+
+      font-family: 'Roboto', sans-serif;
+  }
+
+  .logo {
+      display: flex;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, .92);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      z-index: 1;
+  }
+
+  .movies {
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+      flex-wrap: wrap;
+      margin: 0 auto;
+      justify-content: space-around;
+  }
+
+  .movie {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 9px;
+      overflow: hidden;
+      background-color: #222;
+      color: white;
+      text-align: center;
+      box-shadow: 0 0 10px 4px rgba(0, 0, 0, .2);
+      width: 324px;
+      margin: 0 10px 30px;
+  }
+
+  .movie img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+  }
+
+  .movie .title {
+      padding: 20px;
+      font-size: 18px;
+  }
+
+  .movie button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      border: none;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      color: white;
+      background-color: #28A745;
+      font-size: 16px;
+      cursor: pointer;
+  }
+
+  .movie:hover button {
+      background-color: #1c7a32;
+  }
+
+  .movie button ion-icon {
+      margin-left: 3px;
+  }
+
+  @media (max-width: 740px) {
+      .movie {
+          width: 100%;
+      }
+  }
+#+end_src
+
+** JavaScript
+#+begin_src js
+
+#+end_src
